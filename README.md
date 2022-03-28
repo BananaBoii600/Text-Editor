@@ -3,6 +3,8 @@
 
 Contains many functions like changing the text colors, changing background, bolding the font and italic font
 
+Mac and Linux executables releasing soon :)
+
 # Dependencies
 
 this app requires [python](https://www.python.org/downloads) and [tkinter](https://docs.python.org/3/library/tkinter.html) to be installed in your computer, tkinter can be installed using the command
