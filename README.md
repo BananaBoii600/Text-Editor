@@ -1,4 +1,7 @@
 # Python-Text-Editor
+
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+
 ***A Lighting Fast text editor made in python using tkinter***
 
 Contains many functions like changing the text colors, changing background, bolding the font and italic font
