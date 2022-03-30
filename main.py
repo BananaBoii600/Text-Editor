@@ -161,6 +161,7 @@ def Dark_Mode():
     edit_menu.config(bg=second_color, fg=text_color)
     color_menu.config(bg=second_color, fg=text_color)
     options_menu.config(bg=second_color, fg=text_color)
+    text.config(selectbackground="#ffe5b4")
 
 def Light_Mode():
     main_color = "SystemButtonFace"
@@ -179,6 +180,7 @@ def Light_Mode():
     edit_menu.config(bg=second_color, fg=text_color)
     color_menu.config(bg=second_color, fg=text_color)
     options_menu.config(bg=second_color, fg=text_color)
+    text.config(selectbackground="gray")
 
 def select_all(e):
     text.tag_add("sel", "1.0", "end")
