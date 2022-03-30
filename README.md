@@ -4,16 +4,20 @@
 
 ***A Lighting Fast text editor made in python using tkinter***
 
-Contains many functions like changing the text colors, changing background, bolding the font and italic font
+Contains many functions like changing the text colors, changing background, night mode, bolding the font, printing the typed out text and italic font
 
 Mac and Linux executables releasing soon :)
 
 # Dependencies
 
-this app requires [python](https://www.python.org/downloads) and [tkinter](https://docs.python.org/3/library/tkinter.html) to be installed in your computer, tkinter can be installed using the command
+this app requires [python](https://www.python.org/downloads), [pywin32](https://pypi.org/project/pywin32/) and [tkinter](https://docs.python.org/3/library/tkinter.html) to be installed in your computer, tkinter and pywin32 can be installed using the commands
 
 ```sh
 pip install tk
+```
+and
+```sh
+pip install pywin32
 ```
 
 # Instructions to install the app
