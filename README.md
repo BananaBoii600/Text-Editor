@@ -6,6 +6,12 @@
 
 Contains many functions like changing the text colors, changing background, night mode, bolding the font, printing the typed out text and italic font
 
+# Light Mode
+![image](https://user-images.githubusercontent.com/98301106/160803995-d909e191-2273-4b27-8d07-3c50a8b22ddd.png)
+# Dark Mode
+![image](https://user-images.githubusercontent.com/98301106/160804170-60fbb05f-e62d-4716-b570-1948e285ecb5.png)
+
+
 Mac and Linux executables releasing soon :)
 
 # Dependencies
@@ -26,8 +32,8 @@ Go to releases and download the latest release
 
 Make sure your python version and pip version is up to date
 
-Open command prompt/terminal and install tkinter using `pip install tk`
+After installing tkinter and pywin 32, download the latest release and open the exe file given
 
-once tkinter is installed, open the exe file given and you are ready to use the app!
+Now you are ready to use the app!
 
-# Thank you for downloading
+# Thank you for downloading :)
