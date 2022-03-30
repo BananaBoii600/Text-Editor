@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import font
 from tkinter import colorchooser
-from pip import main
 import win32api
 
 root = Tk()
