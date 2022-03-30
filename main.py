@@ -1,12 +1,12 @@
-from cProfile import label
 from tkinter import *
 from tkinter import filedialog
 from tkinter import font
 from tkinter import colorchooser
+from pip import main
+import win32api
 
 root = Tk()
 root.title("Text Editor")
-root.iconbitmap(r'icon.ico')
 root.geometry("1200x710")
 
 global open_status_name
@@ -140,6 +140,53 @@ def all_text_color():
     if my_color:
         text.config(fg=my_color)
 
+def print_file():
+    file_to_print = filedialog.askopenfilename(title="Open File", filetypes=[("Text Files", "*.txt")])
+    if file_to_print:
+        win32api.ShellExecute(0, "print", file_to_print, None, ".", 0)
+
+def Dark_Mode():
+    main_color = "#000000"
+    second_color = "#373737"
+    text_color = "white"
+    root.config(bg=second_color)
+    status_bar.config(bg=second_color, fg=text_color)
+    text.config(bg=main_color, fg=text_color)
+    toolbar_frame.config(bg=second_color)
+    bold_button.config(bg=main_color, fg=text_color)
+    italics_button.config(bg=main_color, fg=text_color)
+    undo_button.config(bg=main_color, fg=text_color)
+    redo_button.config(bg=main_color, fg=text_color)
+    color_text_button.config(bg=main_color, fg=text_color)
+    file_menu.config(bg=second_color, fg=text_color)
+    edit_menu.config(bg=second_color, fg=text_color)
+    color_menu.config(bg=second_color, fg=text_color)
+    options_menu.config(bg=second_color, fg=text_color)
+
+def Light_Mode():
+    main_color = "SystemButtonFace"
+    second_color = "SystemButtonFace"
+    text_color = "black"
+    root.config(bg=second_color)
+    status_bar.config(bg=second_color, fg=text_color)
+    text.config(bg="white", fg="black")
+    toolbar_frame.config(bg=second_color)
+    bold_button.config(bg=main_color, fg=text_color)
+    italics_button.config(bg=main_color, fg=text_color)
+    undo_button.config(bg=main_color, fg=text_color)
+    redo_button.config(bg=main_color, fg=text_color)
+    color_text_button.config(bg=main_color, fg=text_color)
+    file_menu.config(bg=second_color, fg=text_color)
+    edit_menu.config(bg=second_color, fg=text_color)
+    color_menu.config(bg=second_color, fg=text_color)
+    options_menu.config(bg=second_color, fg=text_color)
+
+def select_all(e):
+    text.tag_add("sel", "1.0", "end")
+
+def clear_all():
+    text.delete(1.0, END)
+
 toolbar_frame = Frame(root)
 toolbar_frame.pack(fill=X)
 
@@ -168,6 +215,8 @@ file_menu.add_command(label="Open", command = open_file)
 file_menu.add_command(label="Save", command=save_file)
 file_menu.add_command(label="Save As", command=save_as_file)
 file_menu.add_separator()
+file_menu.add_command(label="Print File", command=print_file)
+file_menu.add_separator()
 file_menu.add_command(label="Exit", command=root.quit)
 
 edit_menu = Menu(menu, tearoff=False)
@@ -178,6 +227,9 @@ edit_menu.add_command(label="Paste           ", command=lambda: paste_text(False
 edit_menu.add_separator()
 edit_menu.add_command(label="Undo          ", command=text.edit_undo, accelerator="(Ctrl+z)")
 edit_menu.add_command(label="Redo", command=text.edit_redo, accelerator="(Ctrl+y)")
+edit_menu.add_separator()
+edit_menu.add_command(label="Select All", command=lambda: select_all(True), accelerator="(Ctrl+a)")
+edit_menu.add_command(label="Clear", command=clear_all, accelerator="(Delete)")
 
 color_menu = Menu(menu, tearoff=False)
 menu.add_cascade(label="Colors", menu=color_menu)
@@ -185,12 +237,19 @@ color_menu.add_command(label="Selected Text", command=text_color)
 color_menu.add_command(label="All Text", command=all_text_color)
 color_menu.add_command(label="Background", command=bg_color)
 
+options_menu = Menu(menu, tearoff=False)
+menu.add_cascade(label="Options", menu=options_menu)
+options_menu.add_command(label="Dark Mode", command=Dark_Mode)
+options_menu.add_command(label="Light Mode", command = Light_Mode)
+
 status_bar = Label(root, text="Ready        ", anchor=E)
 status_bar.pack(fill=X, side=BOTTOM, ipady=15)
 
 root.bind("<Control-Key-x>", cut_text)
 root.bind("<Control-Key-c>", copy_text)
 root.bind("<Control-Key-v>", paste_text)
+root.bind("<Control-A>", select_all)
+root.bind("<Control-a>", select_all)
 
 bold_button = Button(toolbar_frame, text="Bold", command=Bold)
 bold_button.grid(row=0, column=0, sticky=W, padx=5)
